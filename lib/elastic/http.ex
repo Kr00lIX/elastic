@@ -108,6 +108,10 @@ defmodule Elastic.HTTP do
     []
   end
 
+  defp encode_body(body) when is_bitstring(body) do
+    body
+  end
+
   defp encode_body(body) do
     {:ok, encoded_body} = Poison.encode(body)
     encoded_body
